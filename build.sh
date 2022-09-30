@@ -1,0 +1,1 @@
+docker build -t calvincchan/cordova-android-builder --platform linux/amd64 .

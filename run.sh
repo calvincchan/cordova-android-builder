@@ -1,0 +1,1 @@
+docker run --platform linux/amd64 -it -v /Users/calvin/Documents/Projects/1801-eduink/ycis-mobile-app-ionic:/opt/src --rm calvincchan/cordova-android-builder bash
