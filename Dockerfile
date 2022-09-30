@@ -13,8 +13,8 @@ ENV PATH $PATH:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/cmdline-tools/
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt -qq install -y nodejs
 
-# Cordova
-RUN npm i -g cordova@11.0.0
+# Cordova and Ionic
+RUN npm i -g cordova@11.0.0 ionic@5.4.16
 
 # Gradle
 RUN curl -so /tmp/gradle-6.8.2-bin.zip https://downloads.gradle-dn.com/distributions/gradle-6.8.2-bin.zip && \
@@ -27,7 +27,7 @@ RUN curl -so /tmp/commandlinetools-linux-6858069_latest.zip https://dl.google.co
   unzip -qd $ANDROID_SDK_ROOT/cmdline-tools/ /tmp/commandlinetools-linux-6858069_latest.zip && \
   mv $ANDROID_SDK_ROOT/cmdline-tools/cmdline-tools $ANDROID_SDK_ROOT/cmdline-tools/latest
 
-
 # Update and accept licences
 COPY android.packages android.packages
 RUN ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | sdkmanager --package_file=android.packages
+RUN rm android.packages
